@@ -1,0 +1,44 @@
+import React, { Component } from "react";
+
+class Counter extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      count: 0,
+    };
+  }
+
+  incrementCount = () => {
+    this.setState((prevState) => {
+      return { count: prevState.count + 1 };
+    });
+  };
+
+  render() {
+    return (
+      <div>{this.props.render(this.state.count, this.incrementCount)}</div>
+    );
+  }
+}
+
+export default Counter;
+
+/**
+ * <ClickCounter />
+      <HoverCounter />
+      <User render={(isLoggedIn) => (isLoggedIn ? "Masum" : "Guest")} />
+ */
+
+/**
+ * <Counter
+        render={(count, incrementCount) => (
+          <ClickCounter count={count} incrementCount={incrementCount} />
+        )}
+      />
+      <Counter
+        render={(count, incrementCount) => (
+          <HoverCounter count={count} incrementCount={incrementCount} />
+        )}
+      />
+ */
